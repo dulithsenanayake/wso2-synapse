@@ -86,6 +86,7 @@ public class TracingDataCollectionHelper {
 		propertyMap.remove(SynapseConstants.STATISTICS_STACK);
 		propertyMap.remove(StatisticsConstants.STAT_COLLECTOR_PROPERTY);
 
+		//((Axis2MessageContext)synCtx).getAxis2MessageContext().getProperties()
 		return propertyMap;
 	}
 

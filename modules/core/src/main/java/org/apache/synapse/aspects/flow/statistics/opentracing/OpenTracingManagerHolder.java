@@ -20,6 +20,7 @@ package org.apache.synapse.aspects.flow.statistics.opentracing;
 
 import io.jaegertracing.Configuration;
 import io.jaegertracing.internal.samplers.ConstSampler;
+import org.apache.synapse.aspects.flow.statistics.opentracing.management.APIMTracingManager;
 import org.apache.synapse.aspects.flow.statistics.opentracing.management.JaegerTracingManager;
 import org.apache.synapse.aspects.flow.statistics.opentracing.management.OpenTracingManager;
 
@@ -64,7 +65,8 @@ public class OpenTracingManagerHolder {
                 .withSender(sender)
                 .withMaxQueueSize(reporterMaxQueueSize)
                 .withFlushInterval(reporterFlushInterval);
-        openTracingManager = new JaegerTracingManager(sampler, reporter);
+//        openTracingManager = new JaegerTracingManager(sampler, reporter);
+        openTracingManager = new APIMTracingManager();
     }
 
     /**

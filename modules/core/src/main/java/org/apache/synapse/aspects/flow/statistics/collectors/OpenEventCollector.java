@@ -29,6 +29,7 @@ import org.apache.synapse.aspects.flow.statistics.log.templates.AsynchronousExec
 import org.apache.synapse.aspects.flow.statistics.log.templates.ParentReopenEvent;
 import org.apache.synapse.aspects.flow.statistics.log.templates.StatisticsOpenEvent;
 import org.apache.synapse.aspects.flow.statistics.opentracing.OpenTracingManagerHolder;
+import org.apache.synapse.aspects.flow.statistics.opentracing.management.APIMTracingManager;
 import org.apache.synapse.aspects.flow.statistics.opentracing.stores.ArtifactHolderStore;
 import org.apache.synapse.aspects.flow.statistics.util.StatisticDataCollectionHelper;
 import org.apache.synapse.aspects.flow.statistics.util.StatisticsConstants;
