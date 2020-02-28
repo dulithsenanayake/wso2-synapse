@@ -20,8 +20,6 @@ package org.apache.synapse.aspects.flow.statistics.opentracing;
 
 import io.jaegertracing.Configuration;
 import io.jaegertracing.internal.samplers.ConstSampler;
-import org.apache.synapse.aspects.flow.statistics.opentracing.management.APIMTracingManager;
-import org.apache.synapse.aspects.flow.statistics.opentracing.management.JaegerTracingManager;
 import org.apache.synapse.aspects.flow.statistics.opentracing.management.OpenTracingManager;
 
 /**
@@ -66,7 +64,13 @@ public class OpenTracingManagerHolder {
                 .withMaxQueueSize(reporterMaxQueueSize)
                 .withFlushInterval(reporterFlushInterval);
 //        openTracingManager = new JaegerTracingManager(sampler, reporter);
-        openTracingManager = new APIMTracingManager();
+//        openTracingManager = new APIMTracingManager();
+//          openTracingManager;
+        try {
+            openTracingManager = (OpenTracingManager) Class.forName("org.wso2.carbon.apimgt.gateway.messagetracing.APIMTracingManager").newInstance();
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -89,6 +93,11 @@ public class OpenTracingManagerHolder {
     }
 
     public static OpenTracingManager getOpenTracingManager() {
+        try {
+            openTracingManager = (OpenTracingManager) Class.forName("org.wso2.carbon.apimgt.gateway.messagetracing.APIMTracingManager").newInstance();
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         return openTracingManager;
     }
 }
